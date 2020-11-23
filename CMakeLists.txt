@@ -12,36 +12,36 @@ option(BUILD_SHARED_LIBS "Create shared libraries" ON)
 add_compile_options(-Wall)
 
 # libpigpio.(so|a)
-add_library(pigpio pigpio.c command.c custom.cext)
+add_library(pigpio ${CMAKE_CURRENT_LIST_DIR}/pigpio.c ${CMAKE_CURRENT_LIST_DIR}/command.c ${CMAKE_CURRENT_LIST_DIR}/custom.cext)
 
 # libpigpiod_if.(so|a)
-add_library(pigpiod_if pigpiod_if.c command.c)
+add_library(pigpiod_if ${CMAKE_CURRENT_LIST_DIR}/pigpiod_if.c ${CMAKE_CURRENT_LIST_DIR}/command.c)
 
 # libpigpiod_if2.(so|a)
-add_library(pigpiod_if2 pigpiod_if2.c command.c)
+add_library(pigpiod_if2 ${CMAKE_CURRENT_LIST_DIR}/pigpiod_if2.c ${CMAKE_CURRENT_LIST_DIR}/command.c)
 
 # x_pigpio
-add_executable(x_pigpio x_pigpio.c)
+add_executable(x_pigpio ${CMAKE_CURRENT_LIST_DIR}/x_pigpio.c)
 target_link_libraries(x_pigpio pigpio RT::RT Threads::Threads)
 
 # x_pigpiod_if
-add_executable(x_pigpiod_if x_pigpiod_if.c)
+add_executable(x_pigpiod_if ${CMAKE_CURRENT_LIST_DIR}/x_pigpiod_if.c)
 target_link_libraries(x_pigpiod_if pigpiod_if RT::RT Threads::Threads)
 
 # x_pigpiod_if2
-add_executable(x_pigpiod_if2 x_pigpiod_if2.c)
+add_executable(x_pigpiod_if2 ${CMAKE_CURRENT_LIST_DIR}/x_pigpiod_if2.c)
 target_link_libraries(x_pigpiod_if2 pigpiod_if2 RT::RT Threads::Threads)
 
 # pigpiod
-add_executable(pigpiod pigpiod.c)
+add_executable(pigpiod ${CMAKE_CURRENT_LIST_DIR}/pigpiod.c)
 target_link_libraries(pigpiod pigpio RT::RT Threads::Threads)
 
 # pigs
-add_executable(pigs pigs.c command.c)
+add_executable(pigs ${CMAKE_CURRENT_LIST_DIR}/pigs.c ${CMAKE_CURRENT_LIST_DIR}/command.c)
 target_link_libraries(pigs Threads::Threads)
 
 # pig2vcd
-add_executable(pig2vcd pig2vcd.c command.c)
+add_executable(pig2vcd ${CMAKE_CURRENT_LIST_DIR}/pig2vcd.c ${CMAKE_CURRENT_LIST_DIR}/command.c)
 target_link_libraries(pig2vcd Threads::Threads)
 
 # Configure and install project
